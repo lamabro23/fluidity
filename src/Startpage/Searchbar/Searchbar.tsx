@@ -81,6 +81,7 @@ export const Searchbar = () => {
         placeholder="Your search here..."
         type="input"
         onKeyUp={e => e.which === 13 && redirectToSearch(e.currentTarget.value)}
+        // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus
       />
     </StyledSearchbarContainer>
