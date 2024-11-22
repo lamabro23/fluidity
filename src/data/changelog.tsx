@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 const Link = styled.a`
   &,
@@ -10,19 +10,20 @@ const Link = styled.a`
   :hover {
     text-decoration: underline;
   }
-`
+`;
 
 const RedditUser = ({ user }: { user: string }) => (
   <Link href={`https://www.reddit.com/user/${user}`}>u/{user}</Link>
-)
+);
 const GithubUser = ({ user }: { user: string }) => (
   <Link href={`https://github.com/${user}`}>{user}</Link>
-)
+);
 
 export interface ChangelogVersion {
-  version: string
-  description?: string
-  changes?: (string | JSX.Element)[]
+  version: string;
+  description?: string;
+  // eslint-disable-next-line no-undef
+  changes?: (string | JSX.Element)[];
 }
 
 export const changelog: ChangelogVersion[] = [
@@ -111,4 +112,4 @@ export const changelog: ChangelogVersion[] = [
     version: "0.1.0",
     description: "The initial state of this project.",
   },
-]
+];

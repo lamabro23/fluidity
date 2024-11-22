@@ -4,19 +4,19 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from "react"
+} from "react";
 
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 const StyledAccordionContainer = styled.div`
   margin-left: 100px;
   display: flex;
   width: calc(100% - 400px - 100px);
-`
+`;
 
 export const AccordionContainer = ({ children }: PropsWithChildren) => (
   <StyledAccordionContainer>{children}</StyledAccordionContainer>
-)
+);
 
 const StyledAccordionGroup = styled.div`
   height: 400px;
@@ -27,7 +27,7 @@ const StyledAccordionGroup = styled.div`
   :first-of-type {
     border-left: 3px solid var(--default-color);
   }
-`
+`;
 
 const AccordionContent = styled.div<{ width: number }>`
   height: 100%;
@@ -37,7 +37,7 @@ const AccordionContent = styled.div<{ width: number }>`
   justify-content: center;
   overflow: hidden;
   transition: 0.3s;
-`
+`;
 
 const AccordionTitleWrapper = styled.button<{ active: boolean }>`
   padding: 0;
@@ -129,7 +129,7 @@ const AccordionTitleWrapper = styled.button<{ active: boolean }>`
             }
         }
     `};
-`
+`;
 
 const AccordionTitle = styled.h1<{ title: string; active: boolean }>`
   transform: rotate(90deg);
@@ -138,14 +138,15 @@ const AccordionTitle = styled.h1<{ title: string; active: boolean }>`
     active ? "var(--bg-color)" : "var(--default-color)"};
   transition: 0.5s;
   letter-spacing: 5px;
-`
+`;
 
 type groupProps = PropsWithChildren<{
-  active: boolean
-  title: string
-  onClick: () => void
-  onMouseDown: (e: MouseEvent) => void
-}>
+  active: boolean;
+  title: string;
+  onClick: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onMouseDown: (e: MouseEvent) => void;
+}>;
 
 export const AccordionGroup = ({
   active,
@@ -154,16 +155,16 @@ export const AccordionGroup = ({
   onClick,
   onMouseDown,
 }: groupProps) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const [contentWidth, setContentWidth] = useState(active ? 500 : 0)
+  const ref = useRef<HTMLDivElement>(null);
+  const [contentWidth, setContentWidth] = useState(active ? 500 : 0);
   useEffect(() => {
-    const parent = ref.current?.parentElement
+    const parent = ref.current?.parentElement;
     if (parent && active) {
-      setContentWidth(parent.clientWidth - parent.children.length * 113 - 3)
+      setContentWidth(parent.clientWidth - parent.children.length * 113 - 3);
     } else {
-      setContentWidth(0)
+      setContentWidth(0);
     }
-  }, [active])
+  }, [active]);
 
   return (
     <StyledAccordionGroup ref={ref}>
@@ -182,5 +183,5 @@ export const AccordionGroup = ({
         {children}
       </AccordionContent>
     </StyledAccordionGroup>
-  )
-}
+  );
+};

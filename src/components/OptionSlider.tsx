@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 
-import styled from "@emotion/styled"
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons"
+import styled from "@emotion/styled";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-import { IconButton } from "./IconButton"
+import { IconButton } from "./IconButton";
 
 const SliderWrapper = styled.div`
   height: 20px;
@@ -15,33 +15,35 @@ const SliderWrapper = styled.div`
     display: flex;
     justify-content: center;
   }
-`
+`;
 
 interface props {
-  values: { label: string; value: string }[]
-  onChange: (value: string) => void
-  currentValue: string
+  values: { label: string; value: string }[];
+  // eslint-disable-next-line no-unused-vars
+  onChange: (value: string) => void;
+  currentValue: string;
 }
 
 export const OptionSlider = ({ values, onChange, currentValue }: props) => {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
   useEffect(() => {
     values.forEach((val, i) => {
-      currentValue === val.value && i !== index && setIndex(i)
-    })
-  }, [currentValue, values, index])
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      currentValue === val.value && i !== index && setIndex(i);
+    });
+  }, [currentValue, values, index]);
 
   const handleChange = (newIndex: number) => {
-    setIndex(newIndex)
-    onChange(values[newIndex]?.value)
-  }
+    setIndex(newIndex);
+    onChange(values[newIndex]?.value);
+  };
 
   return (
     <SliderWrapper>
       <IconButton
         disabled={index <= 0}
         onClick={() => {
-          handleChange(index - 1)
+          handleChange(index - 1);
         }}
         icon={faAngleLeft}
       />
@@ -53,5 +55,5 @@ export const OptionSlider = ({ values, onChange, currentValue }: props) => {
         icon={faAngleRight}
       />
     </SliderWrapper>
-  )
-}
+  );
+};

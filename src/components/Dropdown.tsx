@@ -1,14 +1,14 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import styled from "@emotion/styled"
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
+import styled from "@emotion/styled";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
-import { IconButton } from "./IconButton"
+import { IconButton } from "./IconButton";
 
 const DropdownWrapper = styled.div`
   position: relative;
   height: 40px;
-`
+`;
 
 const DropdownButton = styled(IconButton)`
   position: absolute;
@@ -33,7 +33,7 @@ const DropdownButton = styled(IconButton)`
   }
   font-size: initial;
   z-index: 10;
-`
+`;
 
 const DropdownPopup = styled.div<{ height: number; items: number }>`
   height: ${({ height }) => `${height}px`};
@@ -51,7 +51,7 @@ const DropdownPopup = styled.div<{ height: number; items: number }>`
     display: flex;
     flex-direction: column;
   }
-`
+`;
 
 const DropdownItem = styled(IconButton)`
   margin: 0;
@@ -64,27 +64,28 @@ const DropdownItem = styled(IconButton)`
     background-color: var(--default-color);
     color: var(--bg-color);
   }
-`
+`;
 
 interface props {
-  items: { label: string; value: string }[]
-  onChange: (value: string) => void
-  value: string
+  items: { label: string; value: string }[];
+  // eslint-disable-next-line no-unused-vars
+  onChange: (value: string) => void;
+  value: string;
 }
 
 export const Dropdown = ({ items, onChange, value }: props) => {
-  const [popupHeight, setPopupHeight] = useState(0)
-  const [hasBlur, setHasBlur] = useState(false)
+  const [popupHeight, setPopupHeight] = useState(0);
+  const [hasBlur, setHasBlur] = useState(false);
   const getCurrentLabel = () => {
-    const current = items.filter(item => item.value === value)
-    if (current.length > 0) return current[0].label
-    else return value
-  }
+    const current = items.filter((item) => item.value === value);
+    if (current.length > 0) return current[0].label;
+    else return value;
+  };
 
   const handleChange = (value: string) => {
-    onChange(value)
-    setHasBlur(false)
-  }
+    onChange(value);
+    setHasBlur(false);
+  };
 
   return (
     <DropdownWrapper>
@@ -96,9 +97,9 @@ export const Dropdown = ({ items, onChange, value }: props) => {
       <DropdownPopup height={hasBlur ? popupHeight : 0} items={items.length}>
         <div
           onBlur={() => setHasBlur(false)}
-          ref={elem => setPopupHeight(elem?.clientHeight || 0)}
+          ref={(elem) => setPopupHeight(elem?.clientHeight || 0)}
         >
-          {items.map(item => (
+          {items.map((item) => (
             <DropdownItem
               onClick={() => handleChange(item.value)}
               key={item.value}
@@ -108,5 +109,5 @@ export const Dropdown = ({ items, onChange, value }: props) => {
         </div>
       </DropdownPopup>
     </DropdownWrapper>
-  )
-}
+  );
+};

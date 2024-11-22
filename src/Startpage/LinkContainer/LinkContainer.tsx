@@ -1,9 +1,9 @@
-import React, { MouseEvent, useState } from "react"
+import React, { MouseEvent, useState } from "react";
 
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
-import { AccordionContainer, AccordionGroup } from "./Accordion/Accordion"
-import * as Settings from "../Settings/settingsHandler"
+import { AccordionContainer, AccordionGroup } from "./Accordion/Accordion";
+import * as Settings from "../Settings/settingsHandler";
 
 const LinkItem = styled.a`
   width: fit-content;
@@ -31,20 +31,20 @@ const LinkItem = styled.a`
     animation: text-flicker 0.01s ease 0s infinite alternate;
     outline: none;
   }
-`
+`;
 
 export const LinkContainer = () => {
-  const [active, setActive] = useState(0)
-  const linkGroups = Settings.Links.getWithFallback()
+  const [active, setActive] = useState(0);
+  const linkGroups = Settings.Links.getWithFallback();
 
   const middleMouseHandler = (event: MouseEvent, groupIndex: number) => {
-    setActive(groupIndex)
+    setActive(groupIndex);
     if (event.button === 1) {
-      linkGroups[groupIndex].links.forEach(link => {
-        window.open(link.value, "_blank")
-      })
+      linkGroups[groupIndex].links.forEach((link) => {
+        window.open(link.value, "_blank");
+      });
     }
-  }
+  };
 
   return (
     <AccordionContainer>
@@ -54,9 +54,9 @@ export const LinkContainer = () => {
           active={active === groupIndex}
           title={group.title}
           onClick={() => setActive(groupIndex)}
-          onMouseDown={e => middleMouseHandler(e, groupIndex)}
+          onMouseDown={(e) => middleMouseHandler(e, groupIndex)}
         >
-          {group.links.map(link => (
+          {group.links.map((link) => (
             <LinkItem
               tabIndex={active !== groupIndex ? -1 : undefined}
               key={link.label}
@@ -68,5 +68,5 @@ export const LinkContainer = () => {
         </AccordionGroup>
       ))}
     </AccordionContainer>
-  )
-}
+  );
+};

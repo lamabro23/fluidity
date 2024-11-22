@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import styled from "@emotion/styled"
-import { MaterialPicker, ColorResult } from "react-color"
+import styled from "@emotion/styled";
+import { MaterialPicker, ColorResult } from "react-color";
 
-import { themes as defaultThemes, colorsType } from "../data/data"
+import { themes as defaultThemes, colorsType } from "../data/data";
 
 const ColorPickerContainer = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const ColorPickerContainer = styled.div`
     justify-content: center;
     align-items: center;
   }
-`
+`;
 
 const ColorOption = styled.div<{ active: boolean }>`
   width: 100%;
@@ -27,7 +27,7 @@ const ColorOption = styled.div<{ active: boolean }>`
     color: var(--accent-color2);
     animation: text-flicker 0.01s ease 0s infinite alternate;
   }
-`
+`;
 
 const StyledMaterialPicker = styled.div`
   > div * {
@@ -38,27 +38,28 @@ const StyledMaterialPicker = styled.div`
   > div {
     border: 2px solid var(--default-color);
   }
-`
+`;
 interface props {
-  colors: colorsType
-  setColors: (value: colorsType) => void
+  colors: colorsType;
+  // eslint-disable-next-line no-unused-vars
+  setColors: (value: colorsType) => void;
 }
 
 export const ColorPicker = ({ colors, setColors }: props) => {
   const [currentColor, setCurrentColor] = useState(
-    Object.keys(defaultThemes[0].colors)[0]
-  )
+    Object.keys(defaultThemes[0].colors)[0],
+  );
 
   const handleChange = (result: ColorResult) => {
-    const tmp = { ...colors }
-    tmp[currentColor] = result.hex
-    setColors(tmp)
-  }
+    const tmp = { ...colors };
+    tmp[currentColor] = result.hex;
+    setColors(tmp);
+  };
 
   return (
     <ColorPickerContainer>
       <div>
-        {Object.keys(colors).map(key => (
+        {Object.keys(colors).map((key) => (
           <ColorOption
             key={key}
             active={key === currentColor}
@@ -71,9 +72,9 @@ export const ColorPicker = ({ colors, setColors }: props) => {
       <StyledMaterialPicker>
         <MaterialPicker
           color={colors[currentColor]}
-          onChange={color => color && handleChange(color)}
+          onChange={(color) => color && handleChange(color)}
         />
       </StyledMaterialPicker>
     </ColorPickerContainer>
-  )
-}
+  );
+};

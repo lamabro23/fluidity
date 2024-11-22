@@ -1,16 +1,16 @@
-import React, { StrictMode } from "react"
+import React, { StrictMode } from "react";
 
-import { createRoot } from "react-dom/client"
+import { createRoot } from "react-dom/client";
 
-import App from "./App"
-import "./base/index.css"
+import App from "./App";
+import "./base/index.css";
 
-const root = document.getElementById("root")
+const root = document.getElementById("root");
 
-if (!root) throw new Error("Missing root node")
+if (!root) throw new Error("Missing root node");
 
 createRoot(root).render(
   <StrictMode>
     <App />
-  </StrictMode>
-)
+  </StrictMode>,
+);

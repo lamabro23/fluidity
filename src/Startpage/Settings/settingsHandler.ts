@@ -5,22 +5,22 @@ import {
   links,
   searchSettings,
   themes,
-} from "../../data/data"
+} from "../../data/data";
 
 export const Search = {
   get: () => {
-    const lsSearch = localStorage.getItem("search-settings")
-    if (lsSearch) return Search.parse(lsSearch)
-    return undefined
+    const lsSearch = localStorage.getItem("search-settings");
+    if (lsSearch) return Search.parse(lsSearch);
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Search.get() ?? searchSettings
+      return Search.get() ?? searchSettings;
     } catch {
       console.error(
-        "Your currently applied search settings appear to be corrupted."
-      )
-      return searchSettings
+        "Your currently applied search settings appear to be corrupted.",
+      );
+      return searchSettings;
     }
   },
 
@@ -28,20 +28,20 @@ export const Search = {
     localStorage.setItem("search-settings", JSON.stringify(searchSettings)),
 
   parse: (searchSettings: string) => JSON.parse(searchSettings) as SearchType,
-}
+};
 
 export const Themes = {
   get: () => {
-    const lsThemes = localStorage.getItem("themes")
-    if (lsThemes) return JSON.parse(lsThemes) as Theme[]
-    return undefined
+    const lsThemes = localStorage.getItem("themes");
+    if (lsThemes) return JSON.parse(lsThemes) as Theme[];
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Themes.get() ?? themes
+      return Themes.get() ?? themes;
     } catch {
-      console.error("Your currently applied themes appear to be corrupted.")
-      return themes
+      console.error("Your currently applied themes appear to be corrupted.");
+      return themes;
     }
   },
 
@@ -49,33 +49,33 @@ export const Themes = {
     localStorage.setItem("themes", JSON.stringify(themes)),
 
   add: (theme: Theme) => {
-    const lsThemes = Themes.get()
-    if (lsThemes) Themes.set([...lsThemes, theme])
-    else Themes.set([theme])
+    const lsThemes = Themes.get();
+    if (lsThemes) Themes.set([...lsThemes, theme]);
+    else Themes.set([theme]);
   },
 
   remove: (name: string) => {
-    const lsThemes = Themes.get()
-    if (lsThemes) Themes.set(lsThemes.filter(theme => theme.name !== name))
+    const lsThemes = Themes.get();
+    if (lsThemes) Themes.set(lsThemes.filter((theme) => theme.name !== name));
   },
 
   parse: (theme: string) => JSON.parse(theme) as Theme,
-}
+};
 
-const linkGroupsKey = "link-groups"
+const linkGroupsKey = "link-groups";
 export const Links = {
   getRaw: () => localStorage.getItem(linkGroupsKey),
   get: () => {
-    const lsLinks = localStorage.getItem(linkGroupsKey)
-    if (lsLinks) return Links.parse(lsLinks)
-    return undefined
+    const lsLinks = localStorage.getItem(linkGroupsKey);
+    if (lsLinks) return Links.parse(lsLinks);
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Links.get() ?? links
+      return Links.get() ?? links;
     } catch {
-      console.error("Your currently applied links appear to be corrupted.")
-      return links
+      console.error("Your currently applied links appear to be corrupted.");
+      return links;
     }
   },
 
@@ -83,23 +83,23 @@ export const Links = {
     localStorage.setItem(linkGroupsKey, JSON.stringify(themes)),
 
   parse: (linkGroups: string) => JSON.parse(linkGroups) as linkGroup[],
-}
+};
 
 export const Design = {
   get: () => {
-    const lsDesign = localStorage.getItem("design")
-    if (lsDesign) return Themes.parse(lsDesign)
-    return undefined
+    const lsDesign = localStorage.getItem("design");
+    if (lsDesign) return Themes.parse(lsDesign);
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Design.get() ?? themes[0]
+      return Design.get() ?? themes[0];
     } catch {
-      console.error("Your currently applied design appears to be corrupted.")
-      return themes[0]
+      console.error("Your currently applied design appears to be corrupted.");
+      return themes[0];
     }
   },
 
   set: (design: Theme) =>
     localStorage.setItem("design", JSON.stringify(design)),
-}
+};

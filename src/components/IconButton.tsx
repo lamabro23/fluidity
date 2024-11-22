@@ -1,10 +1,10 @@
-import React from "react"
+import React from "react";
 
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
-} from "@fortawesome/react-fontawesome"
+} from "@fortawesome/react-fontawesome";
 
 const StyledIconButton = styled.button<{ inverted?: boolean }>`
   color: ${({ inverted }) =>
@@ -40,12 +40,12 @@ const StyledIconButton = styled.button<{ inverted?: boolean }>`
   > span {
     padding-right: 10px;
   }
-`
+`;
 type props = Partial<Pick<FontAwesomeIconProps, "icon">> &
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    text?: string
-    inverted?: boolean
-  }
+    text?: string;
+    inverted?: boolean;
+  };
 
 export const IconButton = ({ icon, text, children, ...props }: props) => {
   return (
@@ -54,5 +54,5 @@ export const IconButton = ({ icon, text, children, ...props }: props) => {
       {text && <span>{text}</span>}
       {icon && <FontAwesomeIcon icon={icon}></FontAwesomeIcon>}
     </StyledIconButton>
-  )
-}
+  );
+};

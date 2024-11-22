@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import styled from "@emotion/styled"
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import styled from "@emotion/styled";
+import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { SettingsWindow } from "./SettingsWindow"
+import { SettingsWindow } from "./SettingsWindow";
 
 const SettingsPopupToggle = styled.button`
   position: fixed;
@@ -28,7 +28,7 @@ const SettingsPopupToggle = styled.button`
   :focus {
     outline: none;
   }
-`
+`;
 
 const PopupCover = styled.div`
   position: fixed;
@@ -38,12 +38,12 @@ const PopupCover = styled.div`
   left: 0;
   background-color: var(--bg-color);
   opacity: 0.7;
-`
+`;
 
 export const Settings = () => {
-  const [showSettings, setShowSettings] = useState(false)
+  const [showSettings, setShowSettings] = useState(false);
 
-  const hidePopup = () => setShowSettings(false)
+  const hidePopup = () => setShowSettings(false);
 
   return (
     <>
@@ -57,5 +57,5 @@ export const Settings = () => {
         </>
       )}
     </>
-  )
-}
+  );
+};

@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import styled from "@emotion/styled"
-import { faTrash, faPlus } from "@fortawesome/free-solid-svg-icons"
+import styled from "@emotion/styled";
+import { faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import { IconButton } from "../../../components/IconButton"
-import { OptionTextInput } from "../../../components/OptionTextInput"
-import { FastForwards } from "../../../data/data"
+import { IconButton } from "../../../components/IconButton";
+import { OptionTextInput } from "../../../components/OptionTextInput";
+import { FastForwards } from "../../../data/data";
 
 const FastForwardWrapper = styled.div`
   margin-bottom: 20px;
@@ -13,14 +13,14 @@ const FastForwardWrapper = styled.div`
   @media screen and (max-width: 1300px) {
     flex-direction: column;
   }
-`
+`;
 const FastForwardTable = styled.table`
   width: 50%;
   padding: 0 20px;
   @media screen and (max-width: 1300px) {
     width: 100%;
   }
-`
+`;
 const StyledFastForwardItem = styled.tr`
   > td {
     padding: 10px 0;
@@ -36,19 +36,19 @@ const StyledFastForwardItem = styled.tr`
   > :last-of-type {
     width: 50px;
   }
-`
+`;
 const AddItemButton = styled(IconButton)`
   font-size: 1rem;
   display: inline;
-`
+`;
 const AddItemTextField = styled(OptionTextInput)`
   width: calc(100% - 50px);
-`
+`;
 
 interface FastForwardItemProps {
-  value: string
-  url: string
-  deleteThis: () => void
+  value: string;
+  url: string;
+  deleteThis: () => void;
 }
 
 export const FastForwardItem = ({
@@ -66,23 +66,24 @@ export const FastForwardItem = ({
         <IconButton icon={faTrash} onClick={() => deleteThis()} />
       </td>
     </StyledFastForwardItem>
-  )
-}
+  );
+};
 
 interface FastForwardAddItemProps {
-  add: (value: string, url: string) => void
+  // eslint-disable-next-line no-unused-vars
+  add: (value: string, url: string) => void;
 }
 
 export const FastForwardAddItem = ({ add }: FastForwardAddItemProps) => {
-  const [value, setValue] = useState<string>("")
-  const [url, setUrl] = useState<string>("")
+  const [value, setValue] = useState<string>("");
+  const [url, setUrl] = useState<string>("");
 
   return (
     <StyledFastForwardItem>
       <td>
         <AddItemTextField
           value={value}
-          onChange={newValue => setValue(newValue)}
+          onChange={(newValue) => setValue(newValue)}
           placeholder={"search string"}
         />
       </td>
@@ -90,7 +91,7 @@ export const FastForwardAddItem = ({ add }: FastForwardAddItemProps) => {
       <td>
         <AddItemTextField
           value={url}
-          onChange={newUrl => setUrl(newUrl)}
+          onChange={(newUrl) => setUrl(newUrl)}
           placeholder={"destination"}
         />
       </td>
@@ -102,12 +103,13 @@ export const FastForwardAddItem = ({ add }: FastForwardAddItemProps) => {
         />
       </td>
     </StyledFastForwardItem>
-  )
-}
+  );
+};
 
 interface FastForwardSearchProps {
-  links: FastForwards
-  onChange: (links: FastForwards) => void
+  links: FastForwards;
+  // eslint-disable-next-line no-unused-vars
+  onChange: (links: FastForwards) => void;
 }
 
 export const FastForwardSearch = ({
@@ -115,28 +117,28 @@ export const FastForwardSearch = ({
   onChange,
 }: FastForwardSearchProps) => {
   const deleteValue = (value: string) => {
-    const copy = { ...links }
-    delete copy[value]
-    onChange({ ...copy })
-  }
+    const copy = { ...links };
+    delete copy[value];
+    onChange({ ...copy });
+  };
   const addValue = (value: string, url: string) => {
-    const copy = { ...links }
-    copy[value] = url
-    onChange({ ...copy })
-  }
+    const copy = { ...links };
+    copy[value] = url;
+    onChange({ ...copy });
+  };
 
   const table = Object.keys(links)
     .sort()
-    .map(value => (
+    .map((value) => (
       <FastForwardItem
         key={value}
         value={value}
         url={links[value]}
         deleteThis={() => deleteValue(value)}
       />
-    ))
-  const tableLeft = [...table].splice(0, table.length / 2 + (table.length % 2))
-  const tableRight = [...table].splice(table.length / 2 + (table.length % 2))
+    ));
+  const tableLeft = [...table].splice(0, table.length / 2 + (table.length % 2));
+  const tableRight = [...table].splice(table.length / 2 + (table.length % 2));
 
   return (
     <div>
@@ -152,5 +154,5 @@ export const FastForwardSearch = ({
         <tbody>{<FastForwardAddItem add={addValue} />}</tbody>
       </FastForwardTable>
     </div>
-  )
-}
+  );
+};

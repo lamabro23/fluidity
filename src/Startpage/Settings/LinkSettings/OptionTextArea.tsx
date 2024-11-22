@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
-import { linkGroup } from "../../../data/data"
-import * as Settings from "../settingsHandler"
+import { linkGroup } from "../../../data/data";
+import * as Settings from "../settingsHandler";
 
 const StyledOptionTextArea = styled.div<{ error?: string }>`
   position: relative;
@@ -23,7 +23,7 @@ const StyledOptionTextArea = styled.div<{ error?: string }>`
             font-size: 0.8rem;
         }
     `}
-`
+`;
 
 const StyledTextArea = styled.textarea`
   background-color: var(--bg-color);
@@ -33,7 +33,7 @@ const StyledTextArea = styled.textarea`
   width: 100%;
   outline: none;
   resize: none;
-`
+`;
 
 const placeholder = JSON.stringify(
   [
@@ -56,25 +56,26 @@ const placeholder = JSON.stringify(
     },
   ],
   null,
-  2
-)
+  2,
+);
 
 interface props {
-  initialValue: linkGroup[]
-  onChange: (value: linkGroup[]) => void
+  initialValue: linkGroup[];
+  // eslint-disable-next-line no-unused-vars
+  onChange: (value: linkGroup[]) => void;
 }
 
 const getLinksAsString = (): string => {
   // try to do usual parse
   try {
-    const parseLinks = localStorage.getItem("link-groups")
+    const parseLinks = localStorage.getItem("link-groups");
     if (parseLinks)
-      return JSON.stringify(Settings.Links.parse(parseLinks), null, 2)
+      return JSON.stringify(Settings.Links.parse(parseLinks), null, 2);
     // eslint-disable-next-line no-empty
   } catch {}
 
   // try to parse broken json
-  const links = Settings.Links.getRaw()
+  const links = Settings.Links.getRaw();
   if (links) {
     return links
       .replaceAll(":[{", ":[\n      {\n")
@@ -86,37 +87,37 @@ const getLinksAsString = (): string => {
       .replaceAll('"title":', '    "title":')
       .replaceAll('"links":', '\n    "links":')
       .replaceAll('"label":', '        "label":')
-      .replaceAll('"value":', '\n        "value":')
+      .replaceAll('"value":', '\n        "value":');
   }
 
   //Last possible option
-  return JSON.stringify(Settings.Links.getWithFallback(), null, 2)
-}
+  return JSON.stringify(Settings.Links.getWithFallback(), null, 2);
+};
 
 export const OptionTextArea = ({ onChange }: props) => {
-  const [error, setError] = useState<string | undefined>(undefined)
-  const [value, setValue] = useState(getLinksAsString())
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [value, setValue] = useState(getLinksAsString());
 
   const tryOnChangeEvent = (linkGroups: string) => {
-    setValue(linkGroups)
+    setValue(linkGroups);
     try {
-      const parsedData = Settings.Links.parse(linkGroups)
-      setError(undefined)
-      onChange(parsedData)
+      const parsedData = Settings.Links.parse(linkGroups);
+      setError(undefined);
+      onChange(parsedData);
     } catch {
       setError(
-        "Your links are not parseable. Probably you have a Syntax Error?"
-      )
+        "Your links are not parseable. Probably you have a Syntax Error?",
+      );
     }
-  }
+  };
 
   return (
     <StyledOptionTextArea error={error}>
       <StyledTextArea
-        onChange={e => tryOnChangeEvent(e.currentTarget.value)}
+        onChange={(e) => tryOnChangeEvent(e.currentTarget.value)}
         placeholder={placeholder}
         value={value}
       />
     </StyledOptionTextArea>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 const StyledInput = styled.input`
   border: 2px solid var(--default-color);
@@ -15,20 +15,21 @@ const StyledInput = styled.input`
   :focus {
     opacity: 1;
   }
-`
+`;
 
 type props = Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> & {
-  value: string
-  onChange: (value: string) => void
-  className?: string
-}
+  value: string;
+  // eslint-disable-next-line no-unused-vars
+  onChange: (value: string) => void;
+  className?: string;
+};
 
 export const OptionTextInput = ({ onChange, ...props }: props) => {
   return (
     <StyledInput
       type={"text"}
-      onChange={e => onChange(e.currentTarget.value)}
+      onChange={(e) => onChange(e.currentTarget.value)}
       {...props}
     />
-  )
-}
+  );
+};
