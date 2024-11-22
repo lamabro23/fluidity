@@ -1,22 +1,15 @@
-#-- BUILD
-FROM node:18-alpine AS build
+FROM node:18-alpine
 
-USER node
-WORKDIR /home/node
+WORKDIR /app
 
-##-- Copy everything into the container
-ADD --chown=node:node ./public ./public
-ADD --chown=node:node ./src ./src
-ADD --chown=node:node ./package.json .
-ADD --chown=node:node ./tsconfig.json .
+COPY package.json .
 
-##-- Build the app
 RUN npm install
+
+COPY . .
+
 RUN npm run build
 
+EXPOSE 8080
 
-#-- DEPLOYMENT
-FROM nginx:alpine
-
-##-- Copy app build into nginx
-COPY --from=build /home/node/build /usr/share/nginx/html
+CMD [ "npm", "run", "serve" ]
