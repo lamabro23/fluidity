@@ -13,7 +13,8 @@ export default defineConfig(() => {
       checker({
         typescript: true,
         eslint: {
-          lintCommand: "eslint ./src",
+          useFlatConfig: true,
+          lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
           dev: {
             logLevel: ["error"],
           },
