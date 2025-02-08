@@ -48,25 +48,28 @@ export const LinkContainer = () => {
 
   return (
     <AccordionContainer>
-      {linkGroups.map((group, groupIndex) => (
-        <AccordionGroup
-          key={group.title}
-          active={active === groupIndex}
-          title={group.title}
-          onClick={() => setActive(groupIndex)}
-          onMouseDown={(e) => middleMouseHandler(e, groupIndex)}
-        >
-          {group.links.map((link) => (
-            <LinkItem
-              tabIndex={active !== groupIndex ? -1 : undefined}
-              key={link.label}
-              href={link.value}
-            >
-              {link.label}
-            </LinkItem>
-          ))}
-        </AccordionGroup>
-      ))}
+      {linkGroups.map((group, groupIndex) => {
+        const itemKey = `${group.title}-${groupIndex}`;
+        return (
+          <AccordionGroup
+            key={itemKey}
+            active={active === groupIndex}
+            title={group.title}
+            onClick={() => setActive(groupIndex)}
+            onMouseDown={(e) => middleMouseHandler(e, groupIndex)}
+          >
+            {group.links.map((link) => (
+              <LinkItem
+                tabIndex={active !== groupIndex ? -1 : undefined}
+                key={link.label}
+                href={link.value}
+              >
+                {link.label}
+              </LinkItem>
+            ))}
+          </AccordionGroup>
+        );
+      })}
     </AccordionContainer>
   );
 };

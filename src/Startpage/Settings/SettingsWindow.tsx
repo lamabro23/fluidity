@@ -10,10 +10,10 @@ import {
 
 import { Changelog } from "./Changelog/Changelog";
 import { DesignSettings } from "./DesignSettings/DesignSettings";
-import { LinkSettings } from "./LinkSettings/LinkSettings";
 import { SearchSettings } from "./SearchSettings/SearchSettings";
 import * as Settings from "./settingsHandler";
 import { IconButton } from "../../components/IconButton";
+import { LinkSettings } from "./LinkSettings/LinkSettings";
 
 const StyledSettingsWindow = styled.div`
   background-color: var(--bg-color);
@@ -28,6 +28,7 @@ const StyledSettingsWindow = styled.div`
   padding: 60px 30px 30px 30px;
   box-shadow: 10px 10px 0px var(--accent-color);
 `;
+
 const WindowContent = styled.div`
   width: 100%;
   height: calc(100% - 80px);
@@ -73,7 +74,6 @@ export const SettingsLabel = styled.p`
 `;
 
 export const SettingElement = styled.div`
-  background-color: var(--bg-color);
   position: relative;
   padding: 10px 0px;
   + {
