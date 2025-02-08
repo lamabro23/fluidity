@@ -52,6 +52,7 @@ export const NewLinkForm = ({ newLink, onChange, onAdd }: NewLinkFormProps) => {
           index={-1}
           value={newLink.label}
           onChange={(label: string) => onChange({ ...newLink, label })}
+          autoFocus
         />
         <Input
           label="URL"

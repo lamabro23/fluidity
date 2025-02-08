@@ -28,11 +28,18 @@ interface InputProps {
   label: string;
   index: number;
   value: string;
+  autoFocus?: boolean;
   // eslint-disable-next-line no-unused-vars
   onChange: (label: string, index: number) => void;
 }
 
-export const Input = ({ label, index, value, onChange }: InputProps) => (
+export const Input = ({
+  label,
+  index,
+  value,
+  autoFocus,
+  onChange,
+}: InputProps) => (
   <AccordionInputWrapper>
     <Label>{label + ":"}</Label>
     <TextInputWrapper>
@@ -40,6 +47,7 @@ export const Input = ({ label, index, value, onChange }: InputProps) => (
         value={value}
         onChange={(label: string) => onChange(label, index)}
         placeholder={label}
+        autoFocus={autoFocus}
       />
     </TextInputWrapper>
   </AccordionInputWrapper>

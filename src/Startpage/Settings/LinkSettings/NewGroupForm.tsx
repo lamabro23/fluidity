@@ -62,6 +62,7 @@ export const NewGroupForm = ({
             value={newGroupValue}
             onChange={(value: string) => setNewGroupValue(value)}
             placeholder={"New Group Name"}
+            autoFocus
           />
           <IconButton
             disabled={newGroupValue === ""}
