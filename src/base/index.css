@@ -19,7 +19,7 @@ body {
   font-weight: 300;
   src:
     local("Fira Code"),
-    url("./FiraCode-Light.woff") format("woff");
+    url("/fonts/FiraCode-Light.woff") format("woff");
 }
 @font-face {
   font-family: "Fira Code";
@@ -27,7 +27,7 @@ body {
   font-weight: 500;
   src:
     local("Fira Code"),
-    url("./FiraCode-Regular.woff") format("woff");
+    url("/fonts/FiraCode-Regular.woff") format("woff");
 }
 body * {
   font-family: "Fira Code";
