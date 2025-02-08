@@ -55,11 +55,11 @@ const SearchIcon = styled.div<{ src: string }>`
 
 export const Searchbar = () => {
   const searchSettings = Settings.Search.getWithFallback();
-  const engine: string = searchSettings.engine || "duckduckgo.com/";
+  const engine: string = searchSettings.engine || "google.com/";
 
   let searchSymbol = undefined;
-  if (engine.includes("duckduckgo")) searchSymbol = duckduckgo;
-  else if (engine.includes("google")) searchSymbol = google;
+  if (engine.includes("google")) searchSymbol = google;
+  else if (engine.includes("duckduckgo")) searchSymbol = duckduckgo;
   else if (engine.includes("qwant")) searchSymbol = qwant;
   else if (engine.includes("ecosia")) searchSymbol = ecosia;
 

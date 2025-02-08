@@ -172,12 +172,12 @@ export const images: dataElem[] = [
 
 export const searchEngines: dataElem[] = [
   {
-    label: "DuckDuckGo",
-    value: `https://duckduckgo.com/?q=${queryToken}`,
-  },
-  {
     label: "Google",
     value: `https://www.google.com/search?q=${queryToken}`,
+  },
+  {
+    label: "DuckDuckGo",
+    value: `https://duckduckgo.com/?q=${queryToken}`,
   },
   {
     label: "Qwant",
@@ -224,140 +224,25 @@ export interface Theme {
 
 export const themes: Theme[] = [
   {
-    name: "Catppuccin",
-    image:
-      "https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png",
-    colors: {
-      "--bg-color": "#24273A",
-      "--default-color": "#CAD3F5",
-      "--accent-color": "#C6A0F6",
-      "--accent-color2": "#8AADF4",
-    },
-  },
-  {
-    name: "DeathAndMilk",
-    image: pic_1,
-    colors: {
-      "--bg-color": "#2E2E2E",
-      "--default-color": "#E6E6E6",
-      "--accent-color": "#FFB4E6",
-      "--accent-color2": "#B4FFE6",
-    },
-  },
-  {
-    name: "Pop!OS",
-    image:
-      "https://oswallpapers.com/wp-content/uploads/2019/04/kate-hazen-unleash-your-robot.jpg",
-    colors: {
-      "--bg-color": "#333136",
-      "--default-color": "#2BC5EB",
-      "--accent-color": "#FCD307",
-      "--accent-color2": "#2BC5EB",
-    },
-  },
-  {
-    name: "Dark Souls",
-    image:
-      "https://i.pinimg.com/originals/16/74/db/1674dbae45cd38f3d3b4c00dc8616bd7.gif",
-    colors: {
-      "--bg-color": "#32323C",
-      "--default-color": "#A0A08C",
-      "--accent-color": "#9A6650",
-      "--accent-color2": "#461E28",
-    },
-  },
-  {
-    name: "S.E.Lain",
-    image:
-      "https://64.media.tumblr.com/54a945edd2641e20859d6f6537cd7423/tumblr_pwa4bogz4N1qze3hdo2_r1_500.gifv",
-    colors: {
-      "--bg-color": "#0a1a25",
-      "--default-color": "#a6b7ab",
-      "--accent-color": "#94656b",
-      "--accent-color2": "#57182e",
-    },
-  },
-  {
     name: "Kitties",
     image:
       "https://64.media.tumblr.com/5a232d5c0999d02388d78e5c1025f94f/0572516693bf4014-3d/s500x750/0306dc89b657093529aa3ce96e64b9c43572e901.gifv",
     colors: {
-      "--bg-color": "#495662",
-      "--default-color": "#d1f1fa",
-      "--accent-color": "#80aad4",
-      "--accent-color2": "#e8a9b7",
+      "--bg-color": "#2e2e2e",
+      "--default-color": "#e6e6e6",
+      "--accent-color": "#8b638c",
+      "--accent-color2": "#77a3ca",
     },
   },
   {
-    name: "pretty chill",
+    name: "RH",
     image:
-      "https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2019/05/tumblr_oymsnbT0111vjxiz1o1_1280.gif?iv=165",
+      "https://64.media.tumblr.com/5228ca556c242f1b9c7187cd1a874c04/tumblr_p8c6xsY2Jn1tyr2z8o2_400.gifv",
     colors: {
-      "--bg-color": "#397d76",
-      "--default-color": "#f1daba",
-      "--accent-color": "#c5bdb5",
-      "--accent-color2": "#93a662",
-    },
-  },
-  {
-    name: "Tartarus",
-    image:
-      "https://64.media.tumblr.com/8de9e4d31a132f7617ecc05e6a0f8807/tumblr_nd048m6QFH1tqptlzo1_500.gifv",
-    colors: {
-      "--bg-color": "#282828",
-      "--default-color": "#D4BE98",
-      "--accent-color": "#7DAEA3",
-      "--accent-color2": "#A9B665",
-    },
-  },
-  {
-    name: "Pastel Aesthetic",
-    image: "https://i.imgur.com/bZHurZn.jpeg",
-    colors: {
-      "--bg-color": "#2E2E2E",
-      "--default-color": "#F3C9CB",
-      "--accent-color": "#6D79BF",
-      "--accent-color2": "#FBECEF",
-    },
-  },
-  {
-    name: "Bohemian",
-    image: "https://i.imgur.com/gcZ6fmk.jpeg",
-    colors: {
-      "--bg-color": "#2E2E2E",
-      "--default-color": "#D6B29A",
-      "--accent-color": "#B35000",
-      "--accent-color2": "#FBECEF",
-    },
-  },
-  {
-    name: "Modern Boho",
-    image: "https://i.imgur.com/HkEcwGl.jpeg",
-    colors: {
-      "--bg-color": "#2E2E2E",
-      "--default-color": "#C66B3C",
-      "--accent-color": "#F6BC7C",
-      "--accent-color2": "#54573C",
-    },
-  },
-  {
-    name: "Gruvbox Inspired Green",
-    image: "https://i.imgur.com/ISjs7cg.jpeg",
-    colors: {
-      "--bg-color": "#2E2E2E",
-      "--default-color": "#CC9A52",
-      "--accent-color": "#647D44",
-      "--accent-color2": "#FCE4B4",
-    },
-  },
-  {
-    name: "Beach",
-    image: "https://i.imgur.com/gcW1jul.jpeg",
-    colors: {
-      "--bg-color": "#2E2E2E",
-      "--default-color": "#E3C9BC",
-      "--accent-color": "#91C6CC",
-      "--accent-color2": "#F0F8FA",
+      "--bg-color": "#111111",
+      "--default-color": "#d4d4d4",
+      "--accent-color": "#a60000",
+      "--accent-color2": "#808080",
     },
   },
 ];
