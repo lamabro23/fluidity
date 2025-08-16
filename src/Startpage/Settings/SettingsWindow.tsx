@@ -6,6 +6,8 @@ import {
   faTrash,
   faSave,
   faFire,
+  faUpload,
+  faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Changelog } from "./Changelog/Changelog";
@@ -58,6 +60,12 @@ const WindowFooter = styled.div`
   left: 30px;
   right: 30px;
   bottom: 30px;
+`;
+
+const WindowFooterActions = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
 `;
 
 export const StyledSettingsContent = styled.div`
@@ -190,26 +198,40 @@ export const SettingsWindow = ({ hidePopup }: props) => {
       </WindowContent>
 
       <WindowFooter>
-        <SettingsButton
-          onClick={() => applyValues()}
-          text={"Apply Changes"}
-          icon={faSave}
-        />
-        <SettingsButton
-          onClick={() => {
-            window.location.reload();
-          }}
-          text={"Discard Changes"}
-          icon={faFire}
-        />
-        <SettingsButton
-          onClick={() => {
-            localStorage.clear();
-            window.location.reload();
-          }}
-          text={"Delete All Settings"}
-          icon={faTrash}
-        />
+        <WindowFooterActions>
+          <SettingsButton
+            onClick={() => applyValues()}
+            text={"Apply Changes"}
+            icon={faSave}
+          />
+          <SettingsButton
+            onClick={() => {
+              window.location.reload();
+            }}
+            text={"Discard Changes"}
+            icon={faFire}
+          />
+          <SettingsButton
+            onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}
+            text={"Delete All Settings"}
+            icon={faTrash}
+          />
+        </WindowFooterActions>
+        <WindowFooterActions>
+          <SettingsButton
+            onClick={() => {}}
+            text={"Import Settings"}
+            icon={faUpload}
+          />
+          <SettingsButton
+            onClick={() => {}}
+            text={"Export Settings"}
+            icon={faDownload}
+          />
+        </WindowFooterActions>
       </WindowFooter>
     </StyledSettingsWindow>
   );
