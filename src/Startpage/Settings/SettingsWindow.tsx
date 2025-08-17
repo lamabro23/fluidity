@@ -16,6 +16,7 @@ import { SearchSettings } from "./SearchSettings/SearchSettings";
 import * as Settings from "./settingsHandler";
 import { IconButton } from "../../components/IconButton";
 import { LinkSettings } from "./LinkSettings/LinkSettings";
+import { exportSettings, importSettings } from "../../utils/settingsIO";
 
 const StyledSettingsWindow = styled.div`
   background-color: var(--bg-color);
@@ -222,12 +223,19 @@ export const SettingsWindow = ({ hidePopup }: props) => {
         </WindowFooterActions>
         <WindowFooterActions>
           <SettingsButton
-            onClick={() => {}}
+            onClick={() => {
+              importSettings(
+                () => window.location.reload(),
+                (msg) => alert(msg),
+              );
+            }}
             text={"Import Settings"}
             icon={faUpload}
           />
           <SettingsButton
-            onClick={() => {}}
+            onClick={() => {
+              exportSettings();
+            }}
             text={"Export Settings"}
             icon={faDownload}
           />
